@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">PaySo</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="select_currency">Select Currency</string>
+    <string name="Monthly">Monthly</string>
+    <string name="Weekly">Weekly</string>
+    <string name="Custom">Custom</string>
+    <string name="SelectWhenItStarts">Select when it starts</string>
+    <string name="SelectCurrency">Select Currency</string>
+    <string name="Monday">Monday</string>
+    <string name="Tuesday">Tuesday</string>
+    <string name="Wednesday">Wednesday</string>
+    <string name="Thursday">Thursday</string>
+    <string name="Friday">Friday</string>
+    <string name="Saturday">Saturday</string>
+    <string name="Sunday">Sunday</string>
+    <string name="SelectCycleStart">Select Start of Cycle</string>
+    <string name="Welcome">Welcome to PaySo</string>
+</resources>
