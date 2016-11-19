@@ -14,6 +14,8 @@ import com.berstek.payso.staticData.Currency;
 
 import java.util.List;
 
+import static android.R.id.list;
+
 
 /**
  * Created by John on 11/13/2016.
@@ -42,6 +44,7 @@ public class RecentActivitiesAdapter extends RecyclerView.Adapter<RecentActiviti
         RecentActivitiesItem listItem = (RecentActivitiesItem) listData.get(position);
         holder.type.setText(listItem.getType());
         holder.cost.setText(listItem.getCost());
+        holder.details.setText(listItem.getDetails());
         holder.transactionIcon.setImageResource(context.getResources().getIdentifier(listItem.getImageUrl(), null, context.getPackageName()));
     }
 
@@ -53,7 +56,7 @@ public class RecentActivitiesAdapter extends RecyclerView.Adapter<RecentActiviti
 
     class ListHolder extends RecyclerView.ViewHolder {
 
-        private TextView type, cost;
+        private TextView type, cost, details;
         private ImageView transactionIcon;
         private View container;
 
@@ -61,6 +64,7 @@ public class RecentActivitiesAdapter extends RecyclerView.Adapter<RecentActiviti
             super(itemView);
 
             type = (TextView)itemView.findViewById(R.id.txt_type);
+            details = (TextView)itemView.findViewById(R.id.txt_details);
             cost = (TextView)itemView.findViewById(R.id.txt_cost);
             transactionIcon = (ImageView)itemView.findViewById(R.id.img_transaction_icon);
         }

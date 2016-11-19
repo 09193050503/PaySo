@@ -57,6 +57,7 @@ public class SelectDayFragment extends Fragment {
                 EnterBudgetFragment fragment = new EnterBudgetFragment();
                 setupTempData.setCycleStart(view.getText().toString());
                 setupTempData.setDivisor(7);
+                setupTempData.setCycleType("WEEKLY");
                 fragment.setSetupTempData(setupTempData);
                 FragmentManager fn = getFragmentManager();
                 FragmentTransaction ft = fn.beginTransaction();

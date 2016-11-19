@@ -5,10 +5,8 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.support.v4.util.LogWriter;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +15,6 @@ import com.berstek.payso.R;
 import com.berstek.payso.adapters.CurrenciesAdapter;
 import com.berstek.payso.model.SetupTempData;
 import com.berstek.payso.staticData.CurrenciesData;
-
-import static android.webkit.ConsoleMessage.MessageLevel.LOG;
 
 /**
  * A simple {@link Fragment} subclass.

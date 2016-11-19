@@ -14,8 +14,8 @@ import android.widget.TextView;
 
 import com.berstek.payso.R;
 import com.berstek.payso.activities.MainActivity;
-import com.berstek.payso.model.AppStatus;
 import com.berstek.payso.model.SetupTempData;
+import com.berstek.payso.model.UpdateSetupStatus;
 
 import java.text.DecimalFormat;
 
@@ -70,7 +70,7 @@ public class SetupConfirmationFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                AppStatus.setSetupDone(true);
+                new UpdateSetupStatus(view.getContext());
                 Intent intent = new Intent(view.getContext(), MainActivity.class);
                 startActivity(intent);
             }

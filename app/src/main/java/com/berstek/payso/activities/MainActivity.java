@@ -1,31 +1,22 @@
 package com.berstek.payso.activities;
 
 import android.app.Activity;
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.app.Fragment;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ProgressBar;
 
 import com.berstek.payso.R;
-import com.berstek.payso.fragments.CashManagementFragment;
-import com.berstek.payso.fragments.CurrencySelectionFragment;
 import com.berstek.payso.model.AppStatus;
-
-import static com.berstek.payso.model.AppStatus.isSetupDone;
-
+import com.berstek.payso.model.DatabaseBuild;
 
 public class MainActivity extends Activity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -36,6 +27,7 @@ public class MainActivity extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        DatabaseBuild databaseBuild = new DatabaseBuild(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -51,7 +43,7 @@ public class MainActivity extends Activity
         progressBar.getIndeterminateDrawable().setColorFilter(Color.WHITE, PorterDuff.Mode.MULTIPLY);
         progressBar.setProgress(450);
 
-        if(AppStatus.isSetupDone() == false) {
+        if(new AppStatus(this).getStatus() == 0) {
             Intent intent = new Intent(this, InitialSetupActivity.class);
             startActivity(intent);
         }

@@ -3,7 +3,6 @@ package com.berstek.payso.fragments;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.widget.CardView;
@@ -16,8 +15,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.berstek.payso.R;
-import com.berstek.payso.activities.MainActivity;
-import com.berstek.payso.model.AppStatus;
 import com.berstek.payso.model.SetupTempData;
 
 import java.text.DecimalFormat;

@@ -8,7 +8,18 @@ import android.support.annotation.DrawableRes;
 
 public class RecentActivitiesItem {
 
-    private String type, cost;
+    private String type;
+    private String cost;
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    private String details;
     private String imageUrl;
 
     public String getImageUrl() {

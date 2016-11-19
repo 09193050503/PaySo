@@ -19,6 +19,15 @@ public class RecentActivitiesData {
             "Water",
     };
 
+    private static final String[] details = {
+            "McDo",
+            "Nike",
+            "MRT",
+            "NEU Tuition",
+            "Smart Load",
+            "Nawasa",
+    };
+
     private static final String[] costs = {
             "- ₱150",
             "- ₱500",
@@ -51,6 +60,7 @@ public class RecentActivitiesData {
             RecentActivitiesItem item = new RecentActivitiesItem();
             item.setType(types[i]);
             item.setCost(costs[i]);
+            item.setDetails(details[i]);
             item.setImageUrl(getImageUrl(item.getType()));
             data.add(item);
         }
