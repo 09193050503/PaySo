@@ -24,14 +24,13 @@ import com.berstek.payso.fragments.CashManagementFragment;
 import com.berstek.payso.fragments.CurrencySelectionFragment;
 import com.berstek.payso.model.AppStatus;
 
+import static com.berstek.payso.model.AppStatus.isSetupDone;
+
 
 public class MainActivity extends Activity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private ProgressBar progressBar;
-    Fragment setupFragment = new CurrencySelectionFragment();
-    Fragment cashMngFragment = new CashManagementFragment();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +51,7 @@ public class MainActivity extends Activity
         progressBar.getIndeterminateDrawable().setColorFilter(Color.WHITE, PorterDuff.Mode.MULTIPLY);
         progressBar.setProgress(450);
 
-
-        if(new AppStatus().isSetupDone() == false) {
+        if(AppStatus.isSetupDone() == false) {
             Intent intent = new Intent(this, InitialSetupActivity.class);
             startActivity(intent);
         }

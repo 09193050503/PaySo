@@ -59,7 +59,7 @@
     <android.support.v7.widget.CardView
         app:cardElevation="5dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="131dp"
         android:layout_marginTop="4dp"
         >
 
@@ -77,23 +77,19 @@
                 android:ems="10"
                 android:id="@+id/tf_enter_budget"
                 android:inputType="phone"
-                android:digits="0,1,2,3,4,5,6,7,8,9,."
                 android:hint="Enter Budget"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 />
 
             <TextView
-                android:background="@color/colorPrimary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txt_estimated_budget"
                 android:textAlignment="center"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:height="80dp"
-                android:gravity="center"
-                android:textColor="@color/white"
-                />
+                android:gravity="center" />
         </LinearLayout>
 
     </android.support.v7.widget.CardView>

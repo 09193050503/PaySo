@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.berstek.payso.R;
 import com.berstek.payso.adapters.CurrenciesAdapter;
+import com.berstek.payso.model.SetupTempData;
 import com.berstek.payso.staticData.CurrenciesData;
 
 import static android.webkit.ConsoleMessage.MessageLevel.LOG;
@@ -48,9 +49,13 @@ public class CurrencySelectionFragment extends Fragment implements CurrenciesAda
     @Override
     public void onItemClick(int p) {
         CycleSelectionFragment fragment = new CycleSelectionFragment();
-        fragment.setMessage(CurrenciesData.getData().get(p).getCurrency() + " (" +
-                CurrenciesData.getData().get(p).getSymbol() + ") | Tap to Change");
-        fragment.setSymbol(CurrenciesData.getData().get(p).getSymbol());
+
+        SetupTempData setupTempData = new SetupTempData();
+        setupTempData.setCurrency(CurrenciesData.getData().get(p).getCurrency());
+        setupTempData.setSymbol(CurrenciesData.getData().get(p).getSymbol());
+        setupTempData.setCountry(CurrenciesData.getData().get(p).getCountry());
+
+        fragment.setSetupTempData(setupTempData);
         FragmentManager fn = getFragmentManager();
         FragmentTransaction ft = fn.beginTransaction();
         ft.replace(R.id.fragment_setup_fragment, fragment);

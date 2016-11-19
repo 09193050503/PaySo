@@ -11,9 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.berstek.payso.R;
+import com.berstek.payso.model.SetupTempData;
 
 
 /**
@@ -32,21 +32,10 @@ public class CycleSelectionFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cycle_selection, container, false);
         TextView currentCurrencyText = (TextView)view.findViewById(R.id.txt_current_currency);
-        currentCurrencyText.setText(message);
+        currentCurrencyText.setText(setupTempData.getCurrency() + "(" + setupTempData.getSymbol() + ")");
         listenToChangeCurrency(view);
         listenToRadio(view);
         return view;
-    }
-
-    private static String message = "";
-
-    public static void setSymbol(String symbol) {
-        CycleSelectionFragment.symbol = symbol;
-    }
-
-    private static String symbol;
-    public void setMessage(String message) {
-        this.message = message;
     }
 
     private void listenToChangeCurrency(View view) {
@@ -81,8 +70,7 @@ public class CycleSelectionFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 SelectDayFragment fragment = new SelectDayFragment();
-                fragment.setSymbol(symbol);
-                fragment.setCurrency(message);
+                fragment.setSetupTempData(setupTempData);
                 //fragment.setCurrency(message);
                 FragmentManager fn = getFragmentManager();
                 FragmentTransaction ft = fn.beginTransaction();
@@ -90,5 +78,11 @@ public class CycleSelectionFragment extends Fragment {
                 ft.commit();
             }
         });
+    }
+
+    private SetupTempData setupTempData;
+
+    public void setSetupTempData(SetupTempData setupTempData) {
+        this.setupTempData = setupTempData;
     }
 }

@@ -6,13 +6,13 @@ package com.berstek.payso.model;
 
 public class AppStatus {
 
-    private boolean setupDone = false;
+    private static boolean setupDone = false;
 
-    public boolean isSetupDone() {
+    public static boolean isSetupDone() {
         return setupDone;
     }
 
-    public void setSetupDone(boolean setupDone) {
-        this.setupDone = setupDone;
+    public static void setSetupDone(boolean setupDone) {
+        AppStatus.setupDone = setupDone;
     }
 }
