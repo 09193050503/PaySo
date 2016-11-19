@@ -23,4 +23,6 @@
     <string name="Sunday">Sunday</string>
     <string name="SelectCycleStart">Select Start of Cycle</string>
     <string name="Welcome">Welcome to PaySo</string>
+    <string name="Reset">Reset</string>
+    <string name="Confirm">Confirm</string>
 </resources>

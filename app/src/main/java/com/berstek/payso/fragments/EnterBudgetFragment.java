@@ -62,9 +62,14 @@ public class EnterBudgetFragment extends Fragment {
                 estimatedBudget.setText(estimate(editText.getText().toString()));
 
                 if(event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                    AppStatus.setSetupDone(true);
-                    Intent intent = new Intent(view.getContext(), MainActivity.class);
-                    startActivity(intent);
+
+                    SetupConfirmationFragment fragment = new SetupConfirmationFragment();
+                    setupTempData.setBudget(Double.parseDouble(editText.getText().toString()));
+                    fragment.setSetupTempData(setupTempData);
+                    FragmentManager fn = getFragmentManager();
+                    FragmentTransaction ft = fn.beginTransaction();
+                    ft.replace(R.id.fragment_setup_fragment, fragment);
+                    ft.commit();
                 }
 
                 return false;

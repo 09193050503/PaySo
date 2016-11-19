@@ -10,7 +10,8 @@ public class SetupTempData {
                     country = "", cycleType = "",  cycleStart = "";
 
     private double budget = 0;
-    private int divisor = 0;
+    private int divisor = 1;
+
 
     public int getDivisor() {
         return divisor;
