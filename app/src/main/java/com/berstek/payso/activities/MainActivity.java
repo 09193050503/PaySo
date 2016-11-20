@@ -2,6 +2,7 @@ package com.berstek.payso.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import android.widget.ProgressBar;
 
 import com.berstek.payso.R;
+import com.berstek.payso.model.AppSettings;
 import com.berstek.payso.model.AppStatus;
 import com.berstek.payso.model.DatabaseBuild;
 
@@ -43,7 +45,10 @@ public class MainActivity extends Activity
         progressBar.getIndeterminateDrawable().setColorFilter(Color.WHITE, PorterDuff.Mode.MULTIPLY);
         progressBar.setProgress(450);
 
-        if(new AppStatus(this).getStatus() == 0) {
+        //Kapag 0, ibig sabihin, hindi pa nia tapos ung setup. Mareredirect sya sa Initial Setup Activity
+        AppSettings appSettings = new AppSettings(this);
+
+        if(appSettings.getSetupStatus() == 0) {
             Intent intent = new Intent(this, InitialSetupActivity.class);
             startActivity(intent);
         }

@@ -15,7 +15,7 @@ public class UpdateSetupStatus extends SQLiteOpenHelper {
         super(context, "PAYSO_DATABASE", null, 1);
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("SETUP_COMPLETE", 1);
+        values.put("SETUP_STATUS", 1);
 
         // updating row
         db.update("APP_SETTINGS", values, "MARKER" + " = ?",

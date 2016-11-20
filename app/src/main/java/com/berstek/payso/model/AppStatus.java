@@ -17,7 +17,7 @@ public class AppStatus extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, 1);
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Cursor c = db.rawQuery("SELECT setup_complete from APP_SETTINGS ", null);
+        Cursor c = db.rawQuery("SELECT setup_status from APP_SETTINGS ", null);
         if(c.moveToFirst()){
             do{
                 status = c.getInt(0);
@@ -42,5 +42,4 @@ public class AppStatus extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
-
 }

@@ -21,8 +21,15 @@ public class DatabaseBuild extends SQLiteOpenHelper {
     private static final String COL_CYCLE_TYPE = "CYCLE_TYPE";
     private static final String COL_CYCLE_START = "CYCLE_START";
     private static final String COL_BUDGET = "BUDGET";
-    private static final String COL_SETUP_COMPLETE = "SETUP_COMPLETE";
+    private static final String COL_SETUP_STATUS = "SETUP_STATUS";
 
+    private static final String TABLE_CYCLES = "CYCLES";
+    private static final String COL_INDEX = "INDEX";
+    private static final String COL_TYPE = "TYPE";
+    private static final String COL_DAYS = "DAYS";
+    private static final String COL_START = "START";
+    private static final String COL_END = "START";
+    private static final String COL_CURRENT = "START";
 
     public DatabaseBuild(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -49,7 +56,7 @@ public class DatabaseBuild extends SQLiteOpenHelper {
             COL_CYCLE_TYPE + " text, " +
             COL_CYCLE_START + " text, " +
             COL_BUDGET + " double, " +
-            COL_SETUP_COMPLETE + " integer)";
+            COL_SETUP_STATUS + " integer)";
 
     private static final String insertInitData = "insert into " + TABLE_APPSETTINGS + " values ('" +
             "MARKER" + "','" +
@@ -59,6 +66,6 @@ public class DatabaseBuild extends SQLiteOpenHelper {
             "" + "','" +
             "" + "','" +
             "" + "','" +
-            "" + "','" +
+            "0" + "','" +
             "0" + "')";
 }
