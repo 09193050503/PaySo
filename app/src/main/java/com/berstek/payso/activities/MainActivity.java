@@ -2,7 +2,6 @@ package com.berstek.payso.activities;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -17,7 +16,6 @@ import android.widget.ProgressBar;
 
 import com.berstek.payso.R;
 import com.berstek.payso.model.AppSettings;
-import com.berstek.payso.model.AppStatus;
 import com.berstek.payso.model.DatabaseBuild;
 
 public class MainActivity extends Activity
