@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.berstek.payso.R;
 import com.berstek.payso.activities.MainActivity;
+import com.berstek.payso.model.AppSettingsUpdater;
+import com.berstek.payso.model.CycleBuilder;
 import com.berstek.payso.model.SetupTempData;
 import com.berstek.payso.model.UpdateSetupStatus;
 
@@ -70,7 +72,20 @@ public class SetupConfirmationFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                new UpdateSetupStatus(view.getContext());
+                //new UpdateSetupStatus(view.getContext());
+
+                AppSettingsUpdater updater = new AppSettingsUpdater(view.getContext());
+                updater.setSetupStatus(1);
+                updater.setBudget(setupTempData.getBudget());
+                updater.setCycleType(setupTempData.getCycleType());
+                updater.setCountry(setupTempData.getCountry());
+                updater.setCurrency(setupTempData.getCurrency());
+                updater.setCycleStart(setupTempData.getCycleStart());
+                updater.setIso(setupTempData.getIso());
+                updater.setSymbol(setupTempData.getSymbol());
+
+                CycleBuilder cycleBuilder = new CycleBuilder(view.getContext());
+
                 Intent intent = new Intent(view.getContext(), MainActivity.class);
                 startActivity(intent);
             }

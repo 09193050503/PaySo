@@ -4,11 +4,13 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.berstek.payso.staticData.AppVersion;
+
 /**
  * Created by John on 11/19/2016.
  */
 
-public class DatabaseBuild extends SQLiteOpenHelper {
+public class DatabaseBuilder extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "PAYSO_DATABASE";
 
@@ -24,22 +26,24 @@ public class DatabaseBuild extends SQLiteOpenHelper {
     private static final String COL_SETUP_STATUS = "SETUP_STATUS";
 
     private static final String TABLE_CYCLES = "CYCLES";
-    private static final String COL_INDEX = "INDEX";
-    private static final String COL_TYPE = "TYPE";
-    private static final String COL_DAYS = "DAYS";
-    private static final String COL_START = "START";
-    private static final String COL_END = "START";
-    private static final String COL_CURRENT = "START";
 
-    public DatabaseBuild(Context context) {
-        super(context, DATABASE_NAME, null, 1);
+    private static final String COL_START = "START";
+    private static final String COL_DAYS = "DAYS";
+    private static final String COL_STATUS = "STATUS";
+    //private static final String COL_BUDGET = "BUDGET";
+    //private static final String COL_CYCLE_TYPE = "CYCLE_TYPE";
+    private static final String COL_END = "END";
+
+    public DatabaseBuilder(Context context) {
+        super(context, DATABASE_NAME, null, AppVersion.getVersion());
         SQLiteDatabase db = this.getWritableDatabase();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(appSettingsSQL);
-        db.execSQL(insertInitData);
+        db.execSQL(createAppSettingsTable);
+        db.execSQL(insertInitSettingsData);
+        db.execSQL(createCyclesTable);
     }
 
     @Override
@@ -47,7 +51,7 @@ public class DatabaseBuild extends SQLiteOpenHelper {
 
     }
 
-    private static final String appSettingsSQL = "create table " + TABLE_APPSETTINGS + "(" +
+    private static final String createAppSettingsTable = "create table " + TABLE_APPSETTINGS + "(" +
             COL_MARKER + " text primary key not null, " +
             COL_CURRENCY + " text, " +
             COL_COUNTRY + " text, " +
@@ -58,7 +62,7 @@ public class DatabaseBuild extends SQLiteOpenHelper {
             COL_BUDGET + " double, " +
             COL_SETUP_STATUS + " integer)";
 
-    private static final String insertInitData = "insert into " + TABLE_APPSETTINGS + " values ('" +
+    private static final String insertInitSettingsData = "insert into " + TABLE_APPSETTINGS + " values ('" +
             "MARKER" + "','" +
             "" + "','" +
             "" + "','" +
@@ -68,4 +72,12 @@ public class DatabaseBuild extends SQLiteOpenHelper {
             "" + "','" +
             "0" + "','" +
             "0" + "')";
+
+    private static final String createCyclesTable = "create table " + TABLE_CYCLES + " (" +
+            COL_START + " date, " +
+            COL_END + " date, " +
+            COL_CYCLE_TYPE + " text, " +
+            COL_DAYS + " integer, " +
+            COL_STATUS + " integer, " +
+            COL_BUDGET + " double)";
 }

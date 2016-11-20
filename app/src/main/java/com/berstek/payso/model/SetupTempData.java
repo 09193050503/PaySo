@@ -6,8 +6,21 @@ package com.berstek.payso.model;
 
 public class SetupTempData {
 
-    private String currency = "", symbol = "",
-                    country = "", cycleType = "",  cycleStart = "";
+    private String currency = "";
+    private String symbol = "";
+    private String country = "";
+    private String cycleType = "";
+    private String cycleStart = "";
+
+    public String getIso() {
+        return iso;
+    }
+
+    public void setIso(String iso) {
+        this.iso = iso;
+    }
+
+    private String iso = "";
 
     private double budget = 0;
     private int divisor = 1;

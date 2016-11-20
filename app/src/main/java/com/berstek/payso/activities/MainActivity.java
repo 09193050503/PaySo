@@ -16,7 +16,8 @@ import android.widget.ProgressBar;
 
 import com.berstek.payso.R;
 import com.berstek.payso.model.AppSettings;
-import com.berstek.payso.model.DatabaseBuild;
+import com.berstek.payso.model.CycleBuilder;
+import com.berstek.payso.model.DatabaseBuilder;
 
 public class MainActivity extends Activity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -27,7 +28,10 @@ public class MainActivity extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        DatabaseBuild databaseBuild = new DatabaseBuild(this);
+
+        //Create database and necessary tables if non-existent.
+        DatabaseBuilder databaseBuild = new DatabaseBuilder(this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

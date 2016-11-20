@@ -20,7 +20,6 @@ public class AppSettings extends SQLiteOpenHelper{
     private double budget = 0;
     private int setupStatus = 0;
 
-
     private static final String DATABASE_NAME = "PAYSO_DATABASE";
 
     private static final String TABLE_APPSETTINGS = "APP_SETTINGS";
@@ -34,11 +33,10 @@ public class AppSettings extends SQLiteOpenHelper{
     private static final String COL_BUDGET = "BUDGET";
     private static final String COL_SETUP_STATUS = "SETUP_STATUS";
 
-    private SQLiteDatabase db;
 
     public AppSettings(Context context) {
         super(context, DATABASE_NAME, null, 1);
-        db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor c = db.rawQuery(query(), null);
         if(c.moveToFirst()){
@@ -113,5 +111,4 @@ public class AppSettings extends SQLiteOpenHelper{
     public int getSetupStatus() {
         return setupStatus;
     }
-
 }

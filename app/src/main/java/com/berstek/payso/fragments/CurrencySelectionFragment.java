@@ -50,6 +50,7 @@ public class CurrencySelectionFragment extends Fragment implements CurrenciesAda
         setupTempData.setCurrency(CurrenciesData.getData().get(p).getCurrency());
         setupTempData.setSymbol(CurrenciesData.getData().get(p).getSymbol());
         setupTempData.setCountry(CurrenciesData.getData().get(p).getCountry());
+        setupTempData.setIso(CurrenciesData.getData().get(p).getIso());
 
         fragment.setSetupTempData(setupTempData);
         FragmentManager fn = getFragmentManager();
