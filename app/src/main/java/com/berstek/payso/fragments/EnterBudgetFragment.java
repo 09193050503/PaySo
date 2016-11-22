@@ -44,7 +44,7 @@ public class EnterBudgetFragment extends Fragment {
         TextView currentCurrency = (TextView) view.findViewById(R.id.txt_current_currency);
         currentCurrency.setText(setupTempData.getCurrency() + "(" + setupTempData.getSymbol() + ")");
         TextView currentCycle = (TextView) view.findViewById(R.id.txt_current_cycle);
-        currentCycle.setText("Cycle starts every " + setupTempData.getCycleStart() + ".");
+        currentCycle.setText("CycleData starts every " + setupTempData.getCycleStart() + ".");
     }
 
     private void listenToBudgetType(final View view) {

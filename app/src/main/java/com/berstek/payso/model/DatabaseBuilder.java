@@ -30,6 +30,7 @@ public class DatabaseBuilder extends SQLiteOpenHelper {
     private static final String COL_START = "START";
     private static final String COL_DAYS = "DAYS";
     private static final String COL_STATUS = "STATUS";
+    private static final String COL_DAY = "DAY";
     //private static final String COL_BUDGET = "BUDGET";
     //private static final String COL_CYCLE_TYPE = "CYCLE_TYPE";
     private static final String COL_END = "END";
@@ -74,9 +75,10 @@ public class DatabaseBuilder extends SQLiteOpenHelper {
             "0" + "')";
 
     private static final String createCyclesTable = "create table " + TABLE_CYCLES + " (" +
-            COL_START + " date, " +
+            COL_START + " date primary key not null, " +
             COL_END + " date, " +
             COL_CYCLE_TYPE + " text, " +
+            COL_DAY + " text, " +
             COL_DAYS + " integer, " +
             COL_STATUS + " integer, " +
             COL_BUDGET + " double)";

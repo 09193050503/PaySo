@@ -1,6 +1,9 @@
 package com.berstek.payso.activities;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -10,19 +13,24 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ProgressBar;
 
 import com.berstek.payso.R;
+import com.berstek.payso.fragments.CashManagementFragment;
 import com.berstek.payso.model.AppSettings;
 import com.berstek.payso.model.CycleBuilder;
 import com.berstek.payso.model.DatabaseBuilder;
+import com.berstek.payso.utils.CycleUtils;
+
+import static com.berstek.payso.R.id.progressBar;
 
 public class MainActivity extends Activity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,28 +39,37 @@ public class MainActivity extends Activity
 
         //Create database and necessary tables if non-existent.
         DatabaseBuilder databaseBuild = new DatabaseBuilder(this);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        progressBar.getIndeterminateDrawable().setColorFilter(Color.WHITE, PorterDuff.Mode.MULTIPLY);
-        progressBar.setProgress(450);
-
         //Kapag 0, ibig sabihin, hindi pa nia tapos ung setup. Mareredirect sya sa Initial Setup Activity
         AppSettings appSettings = new AppSettings(this);
-
         if(appSettings.getSetupStatus() == 0) {
             Intent intent = new Intent(this, InitialSetupActivity.class);
             startActivity(intent);
+        }
+        else {
+            CashManagementFragment cashManagementFragment = new CashManagementFragment();
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_main_fragment, cashManagementFragment);
+            fragmentTransaction.commit();
+
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                    this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            drawer.setDrawerListener(toggle);
+            toggle.syncState();
+
+            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+            navigationView.setNavigationItemSelectedListener(this);
+        }
+        if (CycleUtils.getCurrentDay().equals(appSettings.getCycleStart()) && appSettings.getSetupStatus() == 1){
+           try {
+               CycleBuilder cycleBuilder = new CycleBuilder(this);
+           } catch (Exception e) {
+               e.printStackTrace();
+               Log.d(null, "DATABASE ALREADY EXISTS");
+           }
         }
     }
 
@@ -111,5 +128,10 @@ public class MainActivity extends Activity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

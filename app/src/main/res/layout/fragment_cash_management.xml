@@ -86,7 +86,8 @@
                     android:layout_marginBottom="34dp"
                     android:textAlignment="center"
                     android:layout_above="@+id/txt_daily_remaining"
-                    android:layout_centerHorizontal="true" />
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/txt_spending_over_allowance" />
 
             </RelativeLayout>
 

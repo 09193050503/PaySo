@@ -61,9 +61,10 @@ public class CycleBuilder extends SQLiteOpenHelper{
     private void insertCycle(SQLiteDatabase db) {
         db.execSQL("insert into " + TABLE_CYCLES + " values ('" +
 
-                new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + "','" +
+                CycleUtils.getCurrentDate() + "','" +
                 "" + "','" +
                 "WEEKLY" + "','" +
+                CycleUtils.getCurrentDay() + "','" +
                 "7" + "','" +
                 "1" + "','" +
                 appSettings.getBudget() + "')"
@@ -76,7 +77,7 @@ public class CycleBuilder extends SQLiteOpenHelper{
     private static final String COL_TRANSACTION_DATE = "TRANSACTION_DATE";
 
     private void createWeeklyCycleTable(SQLiteDatabase db) {
-        db.execSQL("create table CYCLE_" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()).replace("-", "_") + "(" +
+        db.execSQL("create table CYCLE_" + CycleUtils.getCurrentDate().replace("-", "_") + "(" +
                 COL_TYPE + " text," +
                 COL_COST + " text," +
                 COL_DETAILS + " text," +
@@ -85,6 +86,6 @@ public class CycleBuilder extends SQLiteOpenHelper{
     }
 
     private void clearStatus(SQLiteDatabase db) {
-        db.execSQL("update cycles set status = '0' where status = '1'");
+        db.execSQL("update cycles set status = '0' where status = '1' AND start != '" + CycleUtils.getCurrentDate() + "'");
     }
 }

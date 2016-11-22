@@ -51,4 +51,28 @@ public class CycleUtils {
         }
     }
 
+    public static String getCurrentDate() {
+        return new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+    }
+
+    public static double calculateDailyBalance(double budget, double spendings, int remainingDays) {
+        return (budget - spendings) / remainingDays;
+    }
+
+    public static int getRemainingDays(String startDate, String currentDate) {
+        switch (startDate.toLowerCase()) {
+            case "monday":
+            case "tuesday":
+            case "wednesday":
+            case "thursday":
+            case "friday":
+            case "saturday":
+            case "sunday":
+
+            return (7 - dayToInt(startDate)) + dayToInt(startDate);
+
+            default: return 0;
+        }
+    }
+
 }

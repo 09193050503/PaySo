@@ -12,8 +12,8 @@
 
     <fragment
         android:id="@+id/fragment_main_fragment"
-        android:name="com.berstek.payso.fragments.CashManagementFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:name="com.berstek.payso.fragments.PlaceholderFragment"
         />
 </RelativeLayout>

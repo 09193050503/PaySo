@@ -24,4 +24,9 @@ public class InitialSetupActivity extends Activity {
     public void onBackPressed() {
 
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

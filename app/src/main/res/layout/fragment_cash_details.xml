@@ -61,7 +61,7 @@
                             android:textAlignment="center"
                             android:textStyle="normal|bold"
                             android:layout_marginBottom="5dp"
-                            />
+                            android:id="@+id/txt_total_budget" />
 
                     </LinearLayout>
 
@@ -88,7 +88,7 @@
                             android:textAlignment="center"
                             android:textStyle="normal|bold"
                             android:layout_marginBottom="5dp"
-                            />
+                            android:id="@+id/txt_estimated_savings" />
 
                     </LinearLayout>
 
@@ -116,7 +116,7 @@
                             android:textStyle="normal|bold"
                             android:textColor="@color/red"
                             android:layout_marginBottom="5dp"
-                            />
+                            android:id="@+id/txt_total_daily_expenses" />
 
                     </LinearLayout>
 
