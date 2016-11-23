@@ -40,7 +40,7 @@ public class CycleData extends SQLiteOpenHelper{
             do{
                 activeCycle = c.getString(0);
                 startDay = c.getString(3);
-                totalDays = c.getInt(5);
+                totalDays = c.getInt(4);
                 totalBudget = c.getDouble(6);
             }while(c.moveToNext());
         }

@@ -78,7 +78,7 @@ public class CashManagementFragment extends Fragment {
     }
 
     private void listenToFAB(View view){
-        FloatingActionButton fab = (FloatingActionButton)view.findViewById(R.id.fab);
+        final FloatingActionButton fab = (FloatingActionButton)view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,6 +87,7 @@ public class CashManagementFragment extends Fragment {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_lower_screen, fragment);
                 fragmentTransaction.commit();
+                fab.setVisibility(View.INVISIBLE);
             }
         });
     }

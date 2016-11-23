@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:src="@drawable/ic_add"
-        app:elevation="10dp"
+        app:elevation="15dp"
         app:layout_anchor="@+id/card_top"
         app:layout_anchorGravity="bottom|right|end"
         android:layout_marginRight="16dp"
@@ -28,6 +28,7 @@
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:cardElevation="10dp"
             >
 
             <RelativeLayout
@@ -93,14 +94,21 @@
 
         </android.support.v7.widget.CardView>
 
-        <fragment
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/fragment_lower_screen"
-            android:name="com.berstek.payso.fragments.CashDetailsFragment"
-            tools:layout="@layout/fragment_cash_details"
             >
-        </fragment>
+
+            <fragment
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/fragment_lower_screen"
+                android:name="com.berstek.payso.fragments.CashDetailsFragment"
+                tools:layout="@layout/fragment_cash_details"
+                >
+            </fragment>
+
+        </android.support.v7.widget.CardView>
 
 
     </LinearLayout>

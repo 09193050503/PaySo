@@ -1,12 +1,17 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="com.berstek.payso.fragments.AddTransactionFragment"
-    android:background="@color/blueMist"
+    android:background="@color/white"
+    android:paddingLeft="16dp"
     >
+        <android.support.v7.widget.RecyclerView
+            android:gravity="center_horizontal"
+            android:id="@+id/recview_transactions_selection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           >
+        </android.support.v7.widget.RecyclerView>
 
-
-
-
-</FrameLayout>
+</LinearLayout>

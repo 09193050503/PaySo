@@ -1,7 +1,5 @@
 package com.berstek.payso.model;
 
-import android.support.annotation.DrawableRes;
-
 /**
  * Created by John on 11/15/2016.
  */
